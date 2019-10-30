@@ -48,15 +48,15 @@ setlocal enableextensions enabledelayedexpansion
 		if not exist "%APPVEYOR_BUILD_FOLDER%\build\ext\php_ffi.dll" exit /b 3
 		if not exist "%APPVEYOR_BUILD_FOLDER%\build\modules.d" mkdir "%APPVEYOR_BUILD_FOLDER%\build\modules.d"
 
-		echo extension=php_win32service.dll > %APPVEYOR_BUILD_FOLDER%\build\modules.d\win32service.ini
+		echo extension=php_ffi.dll > %APPVEYOR_BUILD_FOLDER%\build\modules.d\php_ffi.ini
 
 		dir %APPVEYOR_BUILD_FOLDER%\build\modules.d
 
-		xcopy %APPVEYOR_BUILD_FOLDER%\LICENSE %APPVEYOR_BUILD_FOLDER%\php_win32service-%PHP_REL%-!ZTS_SHORT!-%PHP_BUILD_CRT%-%PHP_SDK_ARCH%\ /y /f
-		xcopy %APPVEYOR_BUILD_FOLDER%\build\ext\php_ffi.dll %APPVEYOR_BUILD_FOLDER%\php_win32service-%PHP_REL%-!ZTS_SHORT!-%PHP_BUILD_CRT%-%PHP_SDK_ARCH%\ /y /f
+		xcopy %APPVEYOR_BUILD_FOLDER%\LICENSE %APPVEYOR_BUILD_FOLDER%\php_ffi-%PHP_REL%-!ZTS_SHORT!-%PHP_BUILD_CRT%-%PHP_SDK_ARCH%\ /y /f
+		xcopy %APPVEYOR_BUILD_FOLDER%\build\ext\php_ffi.dll %APPVEYOR_BUILD_FOLDER%\php_ffi-%PHP_REL%-!ZTS_SHORT!-%PHP_BUILD_CRT%-%PHP_SDK_ARCH%\ /y /f
 		7z a php_ffi-%PHP_REL%-!ZTS_SHORT!-%PHP_BUILD_CRT%-%PHP_SDK_ARCH%.zip %APPVEYOR_BUILD_FOLDER%\php_ffi-%PHP_REL%-!ZTS_SHORT!-%PHP_BUILD_CRT%-%PHP_SDK_ARCH%\*
-		appveyor PushArtifact php_win32service-%PHP_REL%-!ZTS_SHORT!-%PHP_BUILD_CRT%-%PHP_SDK_ARCH%.zip -FileName php_ffi-%APPVEYOR_REPO_TAG_NAME%-%PHP_REL%-!ZTS_SHORT!-%PHP_BUILD_CRT%-%PHP_SDK_ARCH%.zip
+		appveyor PushArtifact php_ffi-%PHP_REL%-!ZTS_SHORT!-%PHP_BUILD_CRT%-%PHP_SDK_ARCH%.zip -FileName php_ffi-%APPVEYOR_REPO_TAG_NAME%-%PHP_REL%-!ZTS_SHORT!-%PHP_BUILD_CRT%-%PHP_SDK_ARCH%.zip
 
-		echo F|xcopy build\ext\php_ffi.dll artifacts\php_win32service-%PHP_REL%-!ZTS_SHORT!-%PHP_BUILD_CRT%-%PHP_SDK_ARCH%.dll /y /f
+		echo F|xcopy build\ext\php_ffi.dll artifacts\php_ffi-%PHP_REL%-!ZTS_SHORT!-%PHP_BUILD_CRT%-%PHP_SDK_ARCH%.dll /y /f
 	)
 endlocal
