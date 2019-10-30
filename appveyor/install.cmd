@@ -36,14 +36,14 @@ setlocal enableextensions enabledelayedexpansion
 
 	xcopy %APPVEYOR_BUILD_FOLDER%\LICENSE %APPVEYOR_BUILD_FOLDER%\artifacts\ /y /f
 
-	if "%APPVEYOR%" equ "True" rmdir /s /q C:\cygwin >NUL 2>NUL
-	if %errorlevel% neq 0 exit /b 3
-	if "%APPVEYOR%" equ "True" rmdir /s /q C:\cygwin64 >NUL 2>NUL
-	if %errorlevel% neq 0 exit /b 3
-	if "%APPVEYOR%" equ "True" rmdir /s /q C:\mingw >NUL 2>NUL
-	if %errorlevel% neq 0 exit /b 3
-	if "%APPVEYOR%" equ "True" rmdir /s /q C:\mingw-w64 >NUL 2>NUL
-	if %errorlevel% neq 0 exit /b 3
+rem	if "%APPVEYOR%" equ "True" rmdir /s /q C:\cygwin >NUL 2>NUL
+rem	if %errorlevel% neq 0 exit /b 3
+rem	if "%APPVEYOR%" equ "True" rmdir /s /q C:\cygwin64 >NUL 2>NUL
+rem	if %errorlevel% neq 0 exit /b 3
+rem	if "%APPVEYOR%" equ "True" rmdir /s /q C:\mingw >NUL 2>NUL
+rem	if %errorlevel% neq 0 exit /b 3
+rem	if "%APPVEYOR%" equ "True" rmdir /s /q C:\mingw-w64 >NUL 2>NUL
+rem	if %errorlevel% neq 0 exit /b 3
 
 	if "%APPVEYOR_REPO_TAG_NAME%"=="" (
 		set APPVEYOR_REPO_TAG_NAME=%APPVEYOR_REPO_BRANCH%-%APPVEYOR_REPO_COMMIT:~0,8%
